@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-5 mx-auto card card-body">
+  <h1 class="h4 mb-3">Create your account</h1>
+  <form method="post">{% csrf_token %}
+    {% for field in form %}
+      <div class="mb-3">
+        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <input class="form-control" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" id="{{ field.id_for_label }}" required>
+        {% for e in field.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
+      </div>
+    {% endfor %}
+    <button class="btn btn-primary w-100">Sign up</button>
+  </form>
+</div>
+{% endblock %}

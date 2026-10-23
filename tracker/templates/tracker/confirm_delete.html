@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-lg-6 mx-auto card card-body">
+  <h1 class="h4">Delete this application?</h1>
+  <p>{{ object.role }} at {{ object.company }} will be removed permanently.</p>
+  <form method="post" class="d-flex gap-2">{% csrf_token %}
+    <button class="btn btn-danger">Delete</button>
+    <a class="btn btn-outline-secondary" href="{% url 'tracker:list' %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}

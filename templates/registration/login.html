@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-5 mx-auto card card-body">
+  <h1 class="h4 mb-3">Log in</h1>
+  <form method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-3"><label class="form-label">Username</label><input class="form-control" name="username" autofocus required></div>
+    <div class="mb-3"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required></div>
+    <button class="btn btn-primary w-100">Log in</button>
+  </form>
+  <p class="small mt-3 mb-0">New here? <a href="{% url 'signup' %}">Create an account</a></p>
+</div>
+{% endblock %}
